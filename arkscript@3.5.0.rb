@@ -1,4 +1,4 @@
-class Arkscript < Formula
+class ArkscriptAT340 < Formula
   desc "Small, fast, functional and scripting language for C++ projects"
   homepage "https://arkscript-lang.dev"
   url "https://github.com/ArkScript-lang/Ark.git", tag: "v3.5.0"
@@ -23,3 +23,4 @@ class Arkscript < Formula
     end
   end
 end
+
