@@ -11,15 +11,20 @@ You will need to update your `DYLD_LIBRARY_PATH` so that `arkscript` can find it
 export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/opt/homebrew/lib
 ```
 
+Add `ARKSCRIPT_PATH` to your profile script (bashrc, zshrc, fishrc...):
+```shell
+export ARKSCRIPT_PATH=/usr/local/lib/Ark
+```
+
 ## Documentation
 
 `brew help`, `man brew` or check [Homebrew's documentation](https://docs.brew.sh).
 
-## Developper documentation
+## Developer documentation
 
-### Add a new release
+### Adding a new release
 
-1. Update arkscript.rb to point to the latest ArkScript release
-1. Add a new arkscript@version.rb with the same content as arkscript.rb (using the new tag)
-1. Replace the alias under Aliases/Arkscript@version by doing: `cd Aliases && rm arkscript@* && ln -s ../arkscript arkscript@version`i
-
+1. Run `python3 create_formula.py v[X.Y.Z]`
+   - it will create a new formula in `arkscript@X.Y.Z.rb`,
+   - update `arkscript.rb`.
+2. Commit and push the changes
