@@ -23,4 +23,3 @@ class Arkscript{suffix} < Formula
     end
   end
 end
-
