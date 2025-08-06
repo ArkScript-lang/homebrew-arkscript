@@ -23,3 +23,4 @@ class ArkscriptAT340 < Formula
     end
   end
 end
+
