@@ -10,7 +10,7 @@ def main(args):
     version = args[0]
     suffix = version.replace("v", "").replace(".", "")
 
-    with open("template/arkscript_formula.rb", "r") as f:
+    with open("template/arkscript_formula.txt", "r") as f:
         template = f.read()
 
     with open(f"arkscript@{version}.rb", "w") as f:
