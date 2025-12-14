@@ -1,7 +1,7 @@
-class Arkscript < Formula
+class ArkscriptAt400 < Formula
   desc "Small, fast, functional and scripting language for C++ projects"
   homepage "https://arkscript-lang.dev"
-  url "https://github.com/ArkScript-lang/Ark.git", tag: "v4.1.1"
+  url "https://github.com/ArkScript-lang/Ark.git", tag: "v4.0.0"
   license "MPL-2.0"
   head "https://github.com/ArkScript-lang/Ark.git", branch: "dev"
 
