@@ -2,9 +2,9 @@
 
 ## How do I install these formulae?
 
-`brew install arkscript-lang/arkscript/<formula>`
+`brew install arkscript-lang/tap/<formula>`
 
-Or `brew tap arkscript-lang/arkscript` and then `brew install <formula>`.
+Or `brew tap arkscript-lang/tap` and then `brew install <formula>`.
 
 You will need to update your `DYLD_LIBRARY_PATH` so that `arkscript` can find its `libArkReactor`:
 ```shell
