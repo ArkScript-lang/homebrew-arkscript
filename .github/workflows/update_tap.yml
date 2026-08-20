@@ -1,0 +1,64 @@
+name: Update ArkDoc documentation
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types:
+      - my_update_tap
+
+permissions:
+  contents: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "update-tap"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Checkout ArkScript
+        uses: actions/checkout@v6
+        with:
+          repository: ArkScript-lang/Ark
+          path: './ark-latest'
+          ref: 'dev'
+          # so that we can fetch tags
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Generate new tap
+        shell: bash
+        run: |
+          ark_version=$(cd ark-latest; git describe --tags | cut -f1 -d-)
+          echo "New ArkScript tag: ${ark_version}"
+
+          python create_formula.py "$ark_version"
+
+      - name: Commit
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.HOMEBREW_PUSH_COMMIT_GITHUB_TOKEN }}
+          push-branch: 'main'
+          commit-message: 'chore: add new tap version'
+          force-add: 'true'
+          files: ./Formula/
+          name: Lexy Plt through GitHub Action
+          email: lexy@elranet.eu
+

@@ -13,12 +13,12 @@ def main(args):
     with open("template/arkscript_formula.txt", "r") as f:
         template = f.read()
 
-    with open(f"arkscript@{version}.rb", "w") as f:
+    with open(f"Formula/arkscript@{version}.rb", "w") as f:
         f.write(template.format(
             suffix=f"At{suffix}",
             version=version
         ))
-    with open("arkscript.rb", "w") as f:
+    with open("Formula/arkscript.rb", "w") as f:
         f.write(template.format(
             suffix="",
             version=version
